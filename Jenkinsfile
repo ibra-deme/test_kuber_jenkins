@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Étape pour déployer votre application sur Kubernetes
-                bat 'kubectl get configmap'
+                bat 'kubectl get po'
             }
         }
     }
