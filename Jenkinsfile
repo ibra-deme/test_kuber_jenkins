@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Étape pour déployer votre application sur Kubernetes
-                bat 'minikube profile list'
+                bat 'kubectl get configmap'
             }
         }
     }
