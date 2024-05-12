@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Définir les variables d'environnement nécessaires, par exemple les informations d'authentification Kubernetes
-        KUBECONFIG = credentials('kubernetes_token') // ID des credentials de Kubernetes
+        KUBECONFIG = credentials('kuber_token') // ID des credentials de Kubernetes
     }
 
     stages {
@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Étape pour déployer votre application sur Kubernetes
-                withCredentials([file(credentialsId: 'kubernetes_token', variable: 'KUBECONFIG')]) {
+                withCredentials([file(credentialsId: 'kuber_token', variable: 'KUBECONFIG')]) {
                     script {
                         // Déployer sur Kubernetes
                         bat 'kubectl get po'
