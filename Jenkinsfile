@@ -34,7 +34,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Étape pour déployer votre application sur Kubernetes
-                bat 'kubectl get po'
+                withCredentials([file(credentialsId: 'kubernetes_token', variable: 'KUBECONFIG')]) {
+                    script {
+                        // Déployer sur Kubernetes
+                        bat 'kubectl get po'
+                    }
+                }
             }
         }
     }
